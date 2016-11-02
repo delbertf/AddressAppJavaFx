@@ -4,7 +4,10 @@ package ch.dfr.address;
  * This is the main app class
  */
 
+import ch.dfr.address.model.Person;
 import javafx.application.Application;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
@@ -19,8 +22,30 @@ public class MainApp extends Application {
     private Stage primaryStage;
     private BorderPane rootLayout;
 
-    public static void main(String[] args) {
-        launch(args);
+    // the data as an observable list of Persons
+    private ObservableList<Person> personData = FXCollections.observableArrayList();
+
+
+    /**
+     * Constructor
+     */
+    public MainApp() {
+        // add some sample data
+        personData.add(new Person("Hans", "Muster"));
+        personData.add(new Person("Delbert", "Friesen"));
+        personData.add(new Person("John", "Dyck"));
+        personData.add(new Person("Maria", "Juarez"));
+        personData.add(new Person("Josefina", "Erea"));
+        personData.add(new Person("Peter", "Top"));
+    }
+
+
+    /**
+     * Returns the data as an observable list of Persons
+     * @return
+     */
+    public ObservableList<Person> getPersonData() {
+        return personData;
     }
 
     @Override
@@ -75,5 +100,10 @@ public class MainApp extends Application {
      */
     public Stage getPrimaryStage() {
         return this.primaryStage;
+    }
+
+
+    public static void main(String[] args) {
+        launch(args);
     }
 }
