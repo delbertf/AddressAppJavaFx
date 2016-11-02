@@ -5,6 +5,7 @@ package ch.dfr.address;
  */
 
 import ch.dfr.address.model.Person;
+import ch.dfr.address.view.PersonOverviewController;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -89,6 +90,11 @@ public class MainApp extends Application {
 
             // set person overview into center of the root layout.
             rootLayout.setCenter(personOverview);
+
+            // give the controller access to the main app
+            PersonOverviewController controller = loader.getController();
+            controller.setMainApp(this);
+
         } catch (IOException e) {
             e.printStackTrace();
         }
